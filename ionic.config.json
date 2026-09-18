@@ -1,0 +1,7 @@
+{
+  "name": "finases",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
