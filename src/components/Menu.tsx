@@ -11,7 +11,7 @@ import {
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { cardOutline, cashOutline, chevronForwardOutline, homeOutline, leafOutline, receiptOutline, timeOutline } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -23,44 +23,42 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: 'Inbox',
-    url: '/folder/Inbox',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    title: 'Resumen',
+    url: '/folder/Resumen',
+    iosIcon: homeOutline,
+    mdIcon: homeOutline
   },
   {
-    title: 'Outbox',
-    url: '/folder/Outbox',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
+    title: 'Ingresos',
+    url: '/folder/Ingresos',
+    iosIcon: cashOutline,
+    mdIcon: cashOutline
   },
   {
-    title: 'Favorites',
-    url: '/folder/Favorites',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp
+    title: 'Gastos',
+    url: '/folder/Gastos',
+    iosIcon: receiptOutline,
+    mdIcon: receiptOutline
   },
   {
-    title: 'Archived',
-    url: '/folder/Archived',
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp
+    title: 'Deuda e inversión',
+    url: '/folder/Deudas',
+    iosIcon: cardOutline,
+    mdIcon: cardOutline
   },
   {
-    title: 'Trash',
-    url: '/folder/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp
+    title: 'Ahorros',
+    url: '/folder/Ahorros',
+    iosIcon: leafOutline,
+    mdIcon: leafOutline
   },
   {
-    title: 'Spam',
-    url: '/folder/Spam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp
+    title: 'Historial',
+    url: '/folder/Historial',
+    iosIcon: timeOutline,
+    mdIcon: timeOutline
   }
 ];
-
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
 const Menu: React.FC = () => {
   const location = useLocation();
@@ -69,8 +67,8 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+          <IonListHeader>Finases</IonListHeader>
+          <IonNote>Tu dinero, organizado</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
@@ -84,13 +82,11 @@ const Menu: React.FC = () => {
         </IonList>
 
         <IonList id="labels-list">
-          <IonListHeader>Labels</IonListHeader>
-          {labels.map((label, index) => (
-            <IonItem lines="none" key={index}>
-              <IonIcon aria-hidden="true" slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
-            </IonItem>
-          ))}
+          <IonListHeader>Flujo financiero</IonListHeader>
+          <IonItem lines="none" className="menu-hint">
+            <IonIcon aria-hidden="true" slot="start" icon={chevronForwardOutline} />
+            <IonLabel>Marca cada tarea al terminarla</IonLabel>
+          </IonItem>
         </IonList>
       </IonContent>
     </IonMenu>
